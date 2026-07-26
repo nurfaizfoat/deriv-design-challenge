@@ -1,0 +1,183 @@
+{
+  "primitives": {
+    "colors": {
+      "deriv-primary-black": "#000000",
+      "deriv-alert-blue": "#044EFF",
+      "deriv-positive-green": "#108E5E",
+      "deriv-negative-red": "#FE445C",
+      "deriv-warning-amber": "#B54708",
+      "deriv-bg-grey": "#F7F8FA",
+      "deriv-bg-more-grey": "#EEEFF4",
+      "deriv-icon-grey": "#A0A7B7",
+      "deriv-white": "#FFFFFF",
+      "deriv-input-dark": "#20252E",
+      "deriv-bg-dark": "#101216"
+    },
+    "radius": {
+      "sm": "0.5rem",
+      "md": "0.75rem",
+      "lg": "1rem",
+      "xl": "1.25rem",
+      "full": "999px"
+    },
+    "spacing": {
+      "1": "0.25rem",
+      "2": "0.5rem",
+      "3": "0.75rem",
+      "4": "1rem",
+      "5": "1.25rem",
+      "6": "1.5rem",
+      "8": "2rem",
+      "10": "2.5rem",
+      "12": "3rem"
+    }
+  },
+  "semantic": {
+    "light": {
+      "surface": {
+        "page": "#F7F8FA",
+        "card": "#FFFFFF",
+        "subtle": "#EEEFF4"
+      },
+      "content": {
+        "primary": "#000000",
+        "secondary": "#A0A7B7",
+        "inverse": "#FFFFFF"
+      },
+      "border": {
+        "default": "#EEEFF4"
+      },
+      "action": {
+        "primary": "#044EFF",
+        "primary-hover": "color-mix(in srgb, #044EFF 90%, black)"
+      },
+      "status": {
+        "positive": "#108E5E",
+        "warning": "#B54708",
+        "negative": "#FE445C"
+      },
+      "focus": {
+        "ring": "#044EFF"
+      }
+    },
+    "dark": {
+      "surface": {
+        "page": "#101216",
+        "card": "#20252E",
+        "subtle": "color-mix(in srgb, #101216 80%, white)"
+      },
+      "content": {
+        "primary": "#FFFFFF",
+        "secondary": "#A0A7B7",
+        "inverse": "#000000"
+      },
+      "border": {
+        "default": "#20252E"
+      }
+    }
+  },
+  "typography": {
+    "fontFamily": "Inter, sans-serif",
+    "tokens": {
+      "caption": {
+        "mobile": { "size": "12px", "lineHeight": "16px", "weight": 400 },
+        "desktop": { "size": "12px", "lineHeight": "16px", "weight": 400 },
+        "use": "Dates and supporting metadata"
+      },
+      "label-sm": {
+        "mobile": { "size": "12px", "lineHeight": "16px", "weight": 500 },
+        "desktop": { "size": "12px", "lineHeight": "16px", "weight": 500 },
+        "use": "Badges and compact labels"
+      },
+      "label-md": {
+        "mobile": { "size": "14px", "lineHeight": "20px", "weight": 500 },
+        "desktop": { "size": "14px", "lineHeight": "20px", "weight": 500 },
+        "use": "Buttons, tabs and navigation"
+      },
+      "label-lg": {
+        "mobile": { "size": "16px", "lineHeight": "20px", "weight": 500 },
+        "desktop": { "size": "16px", "lineHeight": "20px", "weight": 500 },
+        "use": "Form labels and section labels"
+      },
+      "label-xl": {
+        "mobile": { "size": "18px", "lineHeight": "24px", "weight": 400 },
+        "desktop": { "size": "18px", "lineHeight": "24px", "weight": 400 },
+        "use": "Large callout labels"
+      },
+      "body-sm": {
+        "mobile": { "size": "14px", "lineHeight": "20px", "weight": 400 },
+        "desktop": { "size": "14px", "lineHeight": "20px", "weight": 400 },
+        "use": "Secondary content"
+      },
+      "body-md": {
+        "mobile": { "size": "16px", "lineHeight": "24px", "weight": 400 },
+        "desktop": { "size": "16px", "lineHeight": "24px", "weight": 400 },
+        "use": "Default body and form content"
+      },
+      "body-lg": {
+        "mobile": { "size": "16px", "lineHeight": "24px", "weight": 400 },
+        "desktop": { "size": "18px", "lineHeight": "28px", "weight": 400 },
+        "use": "Prominent supporting text"
+      },
+      "heading-sm": {
+        "mobile": { "size": "18px", "lineHeight": "24px", "weight": 600 },
+        "desktop": { "size": "18px", "lineHeight": "24px", "weight": 600 },
+        "use": "Card heading"
+      },
+      "heading-md": {
+        "mobile": { "size": "20px", "lineHeight": "28px", "weight": 600 },
+        "desktop": { "size": "20px", "lineHeight": "28px", "weight": 600 },
+        "use": "Section heading"
+      },
+      "heading-lg": {
+        "mobile": { "size": "22px", "lineHeight": "28px", "weight": 600 },
+        "desktop": { "size": "24px", "lineHeight": "32px", "weight": 600 },
+        "use": "Page heading"
+      },
+      "display-sm": {
+        "mobile": { "size": "28px", "lineHeight": "36px", "weight": 600 },
+        "desktop": { "size": "32px", "lineHeight": "40px", "weight": 600 },
+        "use": "Prominent metric"
+      },
+      "display-lg": {
+        "mobile": { "size": "32px", "lineHeight": "40px", "weight": 600 },
+        "desktop": { "size": "40px", "lineHeight": "48px", "weight": 600 },
+        "use": "Hero metric / main balance"
+      },
+      "value-sm": {
+        "mobile": { "size": "14px", "lineHeight": "20px", "weight": 600 },
+        "desktop": { "size": "14px", "lineHeight": "20px", "weight": 600 },
+        "use": "Transaction amount",
+        "tabularNums": true
+      },
+      "value-md": {
+        "mobile": { "size": "18px", "lineHeight": "24px", "weight": 600 },
+        "desktop": { "size": "20px", "lineHeight": "28px", "weight": 600 },
+        "use": "Card metric",
+        "tabularNums": true
+      },
+      "value-lg": {
+        "mobile": { "size": "28px", "lineHeight": "36px", "weight": 600 },
+        "desktop": { "size": "32px", "lineHeight": "40px", "weight": 600 },
+        "use": "Main account value",
+        "tabularNums": true
+      }
+    },
+    "breakpoint": "48rem",
+    "weights": {
+      "regular": 400,
+      "medium": 500,
+      "semibold": 600
+    },
+    "tabularNums": {
+      "css": "font-variant-numeric: tabular-nums",
+      "appliesTo": ["value-sm", "value-md", "value-lg"]
+    }
+  },
+  "$metadata": {
+    "source": "packages/design-system/src/tokens/*.css",
+    "generatedAt": "2026-07-26",
+    "responsiveStrategy": "mobile-first, breakpoint at 48rem",
+    "note": "Semantic light theme values are resolved to their computed hex where possible. Dark theme values reference primitives that resolve at runtime."
+  }
+}

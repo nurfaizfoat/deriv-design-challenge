@@ -1,0 +1,35 @@
+/* Design Tokens — Primitives */
+/* Source of truth for all visual values. Components consume semantic tokens, not these directly. */
+
+:root {
+  /* Colors */
+  --deriv-primary-black: #000000;
+  --deriv-alert-blue: #044EFF;
+  --deriv-positive-green: #108E5E;
+  --deriv-negative-red: #FE445C;
+  --deriv-warning-amber: #B54708;
+  --deriv-bg-grey: #F7F8FA;
+  --deriv-bg-more-grey: #EEEFF4;
+  --deriv-icon-grey: #A0A7B7;
+  --deriv-white: #FFFFFF;
+  --deriv-input-dark: #20252E;
+  --deriv-bg-dark: #101216;
+
+  /* Radius */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.25rem;
+  --radius-full: 999px;
+
+  /* Spacing scale */
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-5: 1.25rem;
+  --spacing-6: 1.5rem;
+  --spacing-8: 2rem;
+  --spacing-10: 2.5rem;
+  --spacing-12: 3rem;
+}

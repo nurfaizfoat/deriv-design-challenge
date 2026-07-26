@@ -1,0 +1,44 @@
+/* Design Tokens — Semantic */
+/* Higher-level tokens that describe intent, not specific colors. Components consume these. */
+
+:root {
+  /* Surface */
+  --surface-page: var(--deriv-bg-grey);
+  --surface-card: var(--deriv-white);
+  --surface-subtle: var(--deriv-bg-more-grey);
+
+  /* Content */
+  --content-primary: var(--deriv-primary-black);
+  --content-secondary: var(--deriv-icon-grey);
+  --content-inverse: var(--deriv-white);
+
+  /* Border */
+  --border-default: var(--deriv-bg-more-grey);
+
+  /* Actions */
+  --action-primary: var(--deriv-alert-blue);
+  --action-primary-hover: color-mix(in srgb, var(--deriv-alert-blue) 90%, black);
+  --action-positive: var(--deriv-positive-green);
+  --action-positive-hover: color-mix(in srgb, var(--deriv-positive-green) 90%, black);
+  --action-negative: var(--deriv-negative-red);
+  --action-negative-hover: color-mix(in srgb, var(--deriv-negative-red) 90%, black);
+
+  /* Status */
+  --status-positive: var(--deriv-positive-green);
+  --status-warning: var(--deriv-warning-amber);
+  --status-negative: var(--deriv-negative-red);
+
+  /* Focus */
+  --focus-ring: var(--deriv-alert-blue);
+}
+
+/* Dark theme */
+[data-theme="dark"] {
+  --surface-page: var(--deriv-bg-dark);
+  --surface-card: var(--deriv-input-dark);
+  --surface-subtle: color-mix(in srgb, var(--deriv-bg-dark) 80%, white);
+  --content-primary: var(--deriv-white);
+  --content-secondary: var(--deriv-icon-grey);
+  --content-inverse: var(--deriv-primary-black);
+  --border-default: var(--deriv-input-dark);
+}
