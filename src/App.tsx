@@ -1,121 +1,120 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
-
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <div className="flex min-h-screen flex-col bg-background">
+      {/* Navbar */}
+      <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-sm">
+        <nav className="flex h-14 items-center justify-between px-6">
+          <div className="flex items-center gap-8">
+            <span className="text-xl font-bold tracking-tight">Deriv</span>
+            <div className="hidden items-center gap-6 text-sm font-medium text-muted-foreground md:flex">
+              <span className="cursor-pointer transition-colors hover:text-foreground">
+                Spot
+              </span>
+              <span className="cursor-pointer transition-colors hover:text-foreground">
+                Futures
+              </span>
+              <span className="cursor-pointer transition-colors hover:text-foreground">
+                Earn
+              </span>
+            </div>
+          </div>
+          <div className="flex items-center gap-4">
+            <span className="rounded-full bg-muted px-3 py-1 text-xs font-medium text-muted-foreground">
+              Log In
+            </span>
+            <span className="rounded-full bg-foreground px-3 py-1 text-xs font-medium text-background">
+              Sign Up
+            </span>
+          </div>
+        </nav>
+      </header>
 
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
+      {/* Price Ticker Bar */}
+      <div className="border-b border-border bg-muted/30">
+        <div className="flex h-10 items-center gap-6 px-6 text-sm">
+          <div className="flex items-center gap-2">
+            <span className="font-semibold">BTC/USDT</span>
+            <span className="font-mono tabular-nums text-foreground">
+              67,432.50
+            </span>
+            <span className="font-mono tabular-nums text-emerald-600 dark:text-emerald-400">
+              +2.34%
+            </span>
+          </div>
+          <div className="h-4 w-px bg-border" />
+          <div className="hidden gap-4 text-xs text-muted-foreground sm:flex">
+            <span>
+              24h Vol <span className="text-foreground">2.1B</span>
+            </span>
+            <span>
+              High <span className="text-foreground">68,150.00</span>
+            </span>
+            <span>
+              Low <span className="text-foreground">65,890.20</span>
+            </span>
+          </div>
         </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+      </div>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+      {/* Main Content — 4-column grid: 2/8 | 4/8 | 1/8 | 1/8 */}
+      <main className="grid flex-1 grid-cols-8 gap-3 p-3">
+        {/* Left Panel — 2/8 (col-span-2) */}
+        <section className="col-span-2 flex flex-col gap-3">
+          <div className="flex flex-1 flex-col gap-2 rounded-xl border border-border bg-card p-4">
+            <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+              Order Book
+            </span>
+            <div className="flex flex-1 items-center justify-center text-sm text-muted-foreground">
+              Empty
+            </div>
+          </div>
+          <div className="flex flex-1 flex-col gap-2 rounded-xl border border-border bg-card p-4">
+            <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+              Watchlist
+            </span>
+            <div className="flex flex-1 items-center justify-center text-sm text-muted-foreground">
+              Empty
+            </div>
+          </div>
+        </section>
+
+        {/* Center Panel — 4/8 (col-span-4) */}
+        <section className="col-span-4 flex flex-col gap-3">
+          <div className="flex flex-1 flex-col gap-2 rounded-xl border border-border bg-card p-4">
+            <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+              Chart
+            </span>
+            <div className="flex flex-1 items-center justify-center text-sm text-muted-foreground">
+              Empty
+            </div>
+          </div>
+        </section>
+
+        {/* Right Panel — 1/8 (col-span-1) */}
+        <section className="col-span-1 flex flex-col gap-3">
+          <div className="flex flex-1 flex-col gap-2 rounded-xl border border-border bg-card p-4">
+            <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+              Order Form
+            </span>
+            <div className="flex flex-1 items-center justify-center text-sm text-muted-foreground">
+              Empty
+            </div>
+          </div>
+        </section>
+
+        {/* Far Right Panel — 1/8 (col-span-1) */}
+        <section className="col-span-1 flex flex-col gap-3">
+          <div className="flex flex-1 flex-col gap-2 rounded-xl border border-border bg-card p-4">
+            <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+              Market Trades
+            </span>
+            <div className="flex flex-1 items-center justify-center text-sm text-muted-foreground">
+              Empty
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
   )
 }
 
