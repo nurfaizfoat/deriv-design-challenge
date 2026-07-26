@@ -1,0 +1,41 @@
+@import "@assessment/design-system/tokens";
+@source "../../../packages/design-system/src";
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "@fontsource/inter";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: 'Inter', sans-serif;
+
+  --color-surface-page: var(--surface-page);
+  --color-surface-card: var(--surface-card);
+  --color-surface-subtle: var(--surface-subtle);
+
+  --color-content-primary: var(--content-primary);
+  --color-content-secondary: var(--content-secondary);
+  --color-content-inverse: var(--content-inverse);
+
+  --color-border-default: var(--border-default);
+
+  --color-action-primary: var(--action-primary);
+  --color-action-primary-hover: var(--action-primary-hover);
+
+  --color-status-positive: var(--status-positive);
+  --color-status-warning: var(--status-warning);
+  --color-status-negative: var(--status-negative);
+}
+
+@layer base {
+  * {
+    @apply border-border-default;
+  }
+  body {
+    @apply bg-surface-page text-content-primary;
+    font-family: 'Inter', sans-serif;
+  }
+  html {
+    font-family: 'Inter', sans-serif;
+  }
+}
