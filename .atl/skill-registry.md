@@ -7,6 +7,7 @@ Last updated: 2026-07-26
 ## Sources scanned
 
 - /home/nurfaizfoat/.config/opencode/skills
+- /home/nurfaizfoat/.codex/skills
 
 ## Contract
 
@@ -24,7 +25,7 @@ Last updated: 2026-07-26
 | `comment-writer` | Write warm, direct collaboration comments. Trigger: PR feedback, issue replies, reviews, Slack messages, or GitHub comments. | user | `/home/nurfaizfoat/.config/opencode/skills/comment-writer/SKILL.md` |
 | `go-testing` | Trigger: Go tests, go test coverage, Bubbletea teatest, golden files. Apply focused Go testing patterns. | user | `/home/nurfaizfoat/.config/opencode/skills/go-testing/SKILL.md` |
 | `issue-creation` | Create Gentle AI issues with issue-first checks. Trigger: creating GitHub issues, bug reports, or feature requests. | user | `/home/nurfaizfoat/.config/opencode/skills/issue-creation/SKILL.md` |
-| `judgment-day` | Trigger: judgment day, dual review, adversarial review, juzgar. Run explicit blind dual review with at most two scoped fix/re-judgment rounds. | user | `/home/nurfaizfoat/.config/opencode/skills/judgment-day/SKILL.md` |
+| `judgment-day` | Trigger: judgment day, dual review, adversarial review, juzgar. Run blind dual review, fix confirmed issues, then re-judge. | user | `/home/nurfaizfoat/.config/opencode/skills/judgment-day/SKILL.md` |
 | `skill-creator` | Trigger: new skills, agent instructions, documenting AI usage patterns. Create LLM-first skills with valid frontmatter. | user | `/home/nurfaizfoat/.config/opencode/skills/skill-creator/SKILL.md` |
 | `skill-improver` | Trigger: improve skills, audit skills, refactor skills, skill quality. Audit and upgrade existing LLM-first skills. | user | `/home/nurfaizfoat/.config/opencode/skills/skill-improver/SKILL.md` |
 | `work-unit-commits` | Plan commits as reviewable work units. Trigger: implementation, commit splitting, chained PRs, or keeping tests and docs with code. | user | `/home/nurfaizfoat/.config/opencode/skills/work-unit-commits/SKILL.md` |
