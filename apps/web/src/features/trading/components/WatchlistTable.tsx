@@ -129,9 +129,9 @@ export function WatchlistTable({ items }: WatchlistTableProps) {
       <div role="rowgroup">
         <div
           role="row"
-          className="flex border-b border-border-default px-2 pb-2"
+          className="flex px-2 pb-2"
         >
-          <div role="columnheader" className="flex-1">
+          <div role="columnheader" className="flex-[1.4]">
             <SortHeader
               field="pair"
               label="Pair"
@@ -167,19 +167,27 @@ export function WatchlistTable({ items }: WatchlistTableProps) {
           <div
             key={item.id}
             role="row"
-            className="flex cursor-pointer border-b border-border-default px-2 py-3 transition-colors hover:bg-surface-subtle last:border-b-0"
+            className="flex cursor-pointer px-2 py-3 transition-colors hover:bg-surface-subtle"
           >
             <div
               role="cell"
-              className="flex flex-1 items-center gap-3"
+              className="flex flex-[1.4] items-center gap-3"
             >
-              {/* Logo circle placeholder */}
-              <span
-                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-surface-subtle label-sm text-content-secondary"
-                aria-hidden="true"
-              >
-                {item.assetName.charAt(0)}
-              </span>
+              {/* Logo circle */}
+              {item.logoSrc ? (
+                <img
+                  src={item.logoSrc}
+                  alt={item.assetName}
+                  className="h-9 w-9 shrink-0 rounded-full bg-surface-card object-contain p-1"
+                />
+              ) : (
+                <span
+                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-surface-card label-sm text-content-secondary"
+                  aria-hidden="true"
+                >
+                  {item.assetName.charAt(0)}
+                </span>
+              )}
 
               <div className="flex flex-col gap-0.5">
                 <span className="label-sm tabular-nums text-content-primary">

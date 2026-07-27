@@ -8,6 +8,7 @@ const buttonVariants = cva(
     "inline-flex shrink-0 items-center justify-center",
     "rounded-lg",
     "px-[30px] py-[10px]",
+    "max-h-[35px]",
     "label-sm",
     "border border-transparent",
     "font-medium whitespace-nowrap",

@@ -19,7 +19,7 @@ export function PairDetails({ pair, assetName, logoSrc }: PairDetailsProps) {
         />
       ) : (
         <span
-          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-surface-subtle label-md text-content-secondary"
+          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-surface-card label-md text-content-secondary"
           aria-hidden="true"
         >
           {assetName.charAt(0)}

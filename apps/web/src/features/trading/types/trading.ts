@@ -25,3 +25,34 @@ export type SortDirection = "asc" | "desc";
 export interface WatchlistTableProps {
   items: WatchlistItem[];
 }
+
+export interface OrderBookEntry {
+  id: string;
+  price: number;
+  amount: number; // in BTC
+  total: number; // in USDT
+  side: "bid" | "ask";
+}
+
+export interface OrderBookTableProps {
+  items: OrderBookEntry[];
+}
+
+/** A single price point on the chart. */
+export interface ChartCandle {
+  /** Unix timestamp in milliseconds */
+  time: number;
+  /** Price in USDT */
+  price: number;
+}
+
+export interface TradingChartProps {
+  /** The trading pair label, e.g. "BTC/USDT" */
+  pair: string;
+  /** Array of price points to plot */
+  data: ChartCandle[];
+  /** Current (latest) price for the marker line */
+  currentPrice: number;
+  /** 24h price change as a percentage, e.g. 2.34 */
+  change24h: number;
+}
