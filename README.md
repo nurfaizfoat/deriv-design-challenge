@@ -6,9 +6,9 @@ A focused fintech trading interface built with React, TypeScript, Tailwind CSS v
 
 | Item | Link |
 |------|------|
-| Live application | Not provided yet |
-| Figma | Not provided yet |
-| Loom walkthrough | Not provided yet |
+| Live application | https://lucky-puffpuff-8f8730.netlify.app/ |
+| Figma | <a href="https://www.figma.com/design/NwtvxEh7RdPW5IcvjE5Xg3/Deriv-Design-Challenge?m=auto&t=W8NFhS7t0E1vLZXh-6">Design file</a> |
+| Loom walkthrough | https://www.loom.com/share/89e5f15fd08144969a88dc6b1443f0e1 |
 
 ## Product scope
 
