@@ -17,7 +17,7 @@ import {
   BuySellToggle,
   type TradeSide,
 } from "@/features/trading/components/BuySellToggle";
-import { ArrowLeftRight, X } from "lucide-react";
+import { ArrowLeftRight, Menu, X } from "lucide-react";
 import {
   MOCK_WATCHLIST_ITEMS,
   MOCK_ORDER_BOOK,
@@ -48,6 +48,7 @@ function App() {
   const [depositModalState, setDepositModalState] = useState<
     "deposit" | "wallet-error" | null
   >(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isModalClosing, setIsModalClosing] = useState(false);
   const isBuyOrder = tradeSide === "buy";
   const availableBalance = isBuyOrder ? "9.89USDT" : "0.0245BTC";
@@ -74,7 +75,7 @@ function App() {
     <div className="flex min-h-screen flex-col bg-surface-page" data-theme="dark">
       {/* Navbar */}
       <header className="sticky top-0 z-50 bg-[var(--deriv-primary-black)]/95 backdrop-blur-sm">
-        <nav className="flex h-18 items-center justify-between px-6">
+        <nav className="relative flex min-h-18 items-center justify-between px-4 py-3 md:px-6 md:py-0">
           <div className="flex items-center gap-8">
             <img
               src="/img-deriv-logo.svg"
@@ -96,17 +97,68 @@ function App() {
               </span>
             </div>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="hidden items-center gap-3 md:flex">
             <Button variant="secondary">Log In</Button>
             <Button variant="primary">Sign Up</Button>
+          </div>
+
+          <button
+            type="button"
+            className="inline-flex size-10 items-center justify-center rounded-sm text-content-primary transition-colors hover:bg-[var(--deriv-input-dark)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--focus-ring)] md:hidden"
+            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-navigation-menu"
+            onClick={() => setIsMobileMenuOpen((isOpen) => !isOpen)}
+          >
+            {isMobileMenuOpen ? (
+              <X className="size-5" aria-hidden="true" />
+            ) : (
+              <Menu className="size-5" aria-hidden="true" />
+            )}
+          </button>
+
+          <div
+            id="mobile-navigation-menu"
+            className={`absolute left-0 right-0 top-full border-t border-[var(--deriv-input-dark)] bg-[var(--deriv-primary-black)] px-4 py-4 shadow-lg md:hidden ${
+              isMobileMenuOpen ? "block" : "hidden"
+            }`}
+          >
+            <div className="flex flex-col gap-1 label-md text-content-primary">
+              {(["Market", "Spot", "Futures", "Help"] as const).map((item) => (
+                <button
+                  key={item}
+                  type="button"
+                  className="rounded-sm px-3 py-3 text-left transition-colors hover:bg-[var(--deriv-input-dark)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--focus-ring)]"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {item}
+                </button>
+              ))}
+            </div>
+            <div className="mt-4 grid grid-cols-2 gap-3">
+              <Button
+                variant="secondary"
+                className="w-full"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Log In
+              </Button>
+              <Button
+                variant="primary"
+                className="w-full"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Sign Up
+              </Button>
+            </div>
           </div>
         </nav>
       </header>
 
       {/* Price Ticker Bar */}
       <div className="border-y border-[var(--deriv-primary-black)] bg-surface-page">
-        <div className="flex min-h-12 items-center gap-10 px-6 py-2 text-sm">
-          <div className="flex items-center gap-10">
+        <div className="flex min-h-12 flex-col gap-4 px-4 py-3 text-sm lg:flex-row lg:items-center lg:gap-10 lg:px-6 lg:py-2">
+          <div className="flex items-center gap-4 lg:gap-10">
             <PairDetails pair="BTC/USDT" assetName="Bitcoin" logoSrc="/bitcoin-btc-logo.svg" />
             <div className="w-px self-stretch bg-[var(--deriv-icon-grey)]" aria-hidden="true" />
             <div className="flex flex-col gap-0.5">
@@ -121,32 +173,32 @@ function App() {
               </span>
             </div>
           </div>
-          <div className="flex gap-10">
-            <div className="flex flex-col gap-0.5">
-              <span className="label-sm text-content-primary">24h High</span>
-              <span className="label-sm text-content-secondary">64,429.26</span>
+          <div className="grid grid-cols-4 gap-x-3 lg:flex lg:gap-10">
+            <div className="flex min-w-0 flex-col gap-0.5">
+              <span className="truncate label-sm text-content-primary">24h High</span>
+              <span className="truncate label-sm text-content-secondary">64,429.26</span>
             </div>
-            <div className="flex flex-col gap-0.5">
-              <span className="label-sm text-content-primary">24h Low</span>
-              <span className="label-sm text-content-secondary">62,150.80</span>
+            <div className="flex min-w-0 flex-col gap-0.5">
+              <span className="truncate label-sm text-content-primary">24h Low</span>
+              <span className="truncate label-sm text-content-secondary">62,150.80</span>
             </div>
-            <div className="flex flex-col gap-0.5">
-              <span className="label-sm text-content-primary">24h Volume (BTC)</span>
-              <span className="label-sm text-content-secondary">14,832.45</span>
+            <div className="flex min-w-0 flex-col gap-0.5">
+              <span className="truncate label-sm text-content-primary">24h Volume (BTC)</span>
+              <span className="truncate label-sm text-content-secondary">14,832.45</span>
             </div>
-            <div className="flex flex-col gap-0.5">
-              <span className="label-sm text-content-primary">24h Volume (USDT)</span>
-              <span className="label-sm text-content-secondary">984.2M</span>
+            <div className="flex min-w-0 flex-col gap-0.5">
+              <span className="truncate label-sm text-content-primary">24h Volume (USDT)</span>
+              <span className="truncate label-sm text-content-secondary">984.2M</span>
             </div>
           </div>
         </div>
       </div>
 
       {/* Main Content — 3-column grid: 5/24 | 15/24 | 4/24 */}
-      <main className="grid flex-1 grid-cols-[repeat(24,minmax(0,1fr))] gap-0 bg-[var(--deriv-primary-black)]">
+      <main className="flex flex-1 flex-col gap-px bg-[var(--deriv-primary-black)] lg:grid lg:grid-cols-[repeat(24,minmax(0,1fr))] lg:gap-0">
         {/* Left Panel — Watchlist */}
-        <section className="col-span-5">
-          <Card className="h-full">
+        <section className="order-2 lg:order-none lg:col-span-5">
+          <Card className="h-full border-l-0 border-r-0 lg:border-l lg:border-r">
             <CardContent>
               <SearchField />
               <Tabs
@@ -161,7 +213,7 @@ function App() {
         </section>
 
         {/* Center Panel — Chart */}
-        <section className="col-span-15">
+        <section className="hidden lg:col-span-15 lg:block">
           <TradingChart
             pair="BTC/USDT"
             data={MOCK_CHART_DATA}
@@ -171,8 +223,8 @@ function App() {
         </section>
 
         {/* Right Panel — Order Form + Order Book stacked */}
-        <section className="col-span-4 flex min-h-0 flex-col gap-0">
-          <Card className="shrink-0">
+        <section className="order-1 flex min-h-0 flex-col gap-px lg:order-none lg:col-span-4 lg:gap-0">
+          <Card className="shrink-0 border-l-0 border-r-0 lg:border-l lg:border-r">
             <CardContent>
               <Tabs
                 tabs={ORDER_FORM_TABS}
@@ -251,7 +303,7 @@ function App() {
             </CardContent>
           </Card>
 
-          <Card className="min-h-0 flex-1">
+          <Card className="min-h-0 flex-1 border-l-0 border-r-0 lg:border-l lg:border-r">
             <CardContent className="min-h-0 flex-1 overflow-y-auto">
               <Tabs
                 tabs={ORDER_BOOK_TABS}

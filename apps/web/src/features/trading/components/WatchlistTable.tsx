@@ -60,6 +60,7 @@ interface SortHeaderProps {
   activeField: WatchlistSortField | null;
   direction: SortDirection;
   onSort: (field: WatchlistSortField) => void;
+  align?: "start" | "end";
 }
 
 function SortHeader({
@@ -68,6 +69,7 @@ function SortHeader({
   activeField,
   direction,
   onSort,
+  align = "start",
 }: SortHeaderProps) {
   const isActive = activeField === field;
 
@@ -75,7 +77,10 @@ function SortHeader({
     <button
       type="button"
       onClick={() => onSort(field)}
-      className="label-sm flex w-full items-center gap-1 text-content-secondary transition-colors hover:text-content-primary"
+      className={cn(
+        "label-sm flex w-full items-center gap-1 text-content-secondary transition-colors hover:text-content-primary",
+        align === "end" && "justify-end text-right",
+      )}
     >
       {label}
       <span className="flex flex-col -space-y-1" aria-hidden="true">
@@ -129,9 +134,9 @@ export function WatchlistTable({ items }: WatchlistTableProps) {
       <div role="rowgroup">
         <div
           role="row"
-          className="flex px-2 pb-2"
+          className="grid grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)_minmax(4.5rem,0.8fr)] gap-3 px-2 pb-2"
         >
-          <div role="columnheader" className="flex-[1.4]">
+          <div role="columnheader" className="min-w-0">
             <SortHeader
               field="pair"
               label="Pair"
@@ -140,7 +145,7 @@ export function WatchlistTable({ items }: WatchlistTableProps) {
               onSort={handleSort}
             />
           </div>
-          <div role="columnheader" className="flex-1">
+          <div role="columnheader" className="min-w-0">
             <SortHeader
               field="price"
               label="Price"
@@ -149,13 +154,14 @@ export function WatchlistTable({ items }: WatchlistTableProps) {
               onSort={handleSort}
             />
           </div>
-          <div role="columnheader" className="flex-1">
+          <div role="columnheader" className="min-w-0">
             <SortHeader
               field="change"
               label="Change"
               activeField={sortField}
               direction={sortDirection}
               onSort={handleSort}
+              align="end"
             />
           </div>
         </div>
@@ -167,11 +173,11 @@ export function WatchlistTable({ items }: WatchlistTableProps) {
           <div
             key={item.id}
             role="row"
-            className="flex cursor-pointer px-2 py-3 transition-colors hover:bg-surface-subtle"
+            className="grid cursor-pointer grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)_minmax(4.5rem,0.8fr)] gap-3 px-2 py-3 transition-colors hover:bg-surface-subtle"
           >
             <div
               role="cell"
-              className="flex flex-[1.4] items-center gap-3"
+              className="flex min-w-0 items-center gap-3"
             >
               {/* Logo circle */}
               {item.logoSrc ? (
@@ -189,30 +195,30 @@ export function WatchlistTable({ items }: WatchlistTableProps) {
                 </span>
               )}
 
-              <div className="flex flex-col gap-0.5">
-                <span className="label-sm tabular-nums text-content-primary">
+              <div className="flex min-w-0 flex-col gap-0.5">
+                <span className="truncate label-sm tabular-nums text-content-primary">
                   {item.pair}
                 </span>
-                <span className="label-sm text-content-secondary">
+                <span className="truncate label-sm text-content-secondary">
                   {item.assetName}
                 </span>
               </div>
             </div>
-            <div role="cell" className="flex flex-1 items-center">
-              <div className="flex flex-col gap-0.5">
-                <span className="label-sm tabular-nums text-content-primary">
+            <div role="cell" className="flex min-w-0 items-center">
+              <div className="flex min-w-0 flex-col gap-0.5">
+                <span className="truncate label-sm tabular-nums text-content-primary">
                   {formatPrice(item.price)}
                 </span>
-                <span className="label-sm tabular-nums text-content-secondary">
+                <span className="truncate label-sm tabular-nums text-content-secondary">
                   {formatMarketCap(item.volume24h)}
                 </span>
               </div>
             </div>
-            <div role="cell" className="flex flex-1 items-center">
-              <div className="flex flex-col gap-0.5">
+            <div role="cell" className="flex min-w-0 items-center justify-end text-right">
+              <div className="flex min-w-0 flex-col gap-0.5">
                 <span
                   className={cn(
-                    "label-sm tabular-nums",
+                    "truncate label-sm tabular-nums",
                     item.change > 0
                       ? "text-status-positive"
                       : item.change < 0
@@ -222,7 +228,7 @@ export function WatchlistTable({ items }: WatchlistTableProps) {
                 >
                   {formatChange(item.change)}
                 </span>
-                <span className="label-sm tabular-nums text-content-secondary">
+                <span className="truncate label-sm tabular-nums text-content-secondary">
                   {formatMarketCap(item.marketCap)}
                 </span>
               </div>

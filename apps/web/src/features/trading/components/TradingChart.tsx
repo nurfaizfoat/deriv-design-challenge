@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Card, CardContent } from "@assessment/design-system";
 import type { TradingChartProps } from "../types/trading";
 
@@ -24,6 +24,16 @@ export function TradingChart({
   currentPrice,
   change24h,
 }: TradingChartProps) {
+  const [isChartLoading, setIsChartLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      setIsChartLoading(false);
+    }, 1250);
+
+    return () => window.clearTimeout(timer);
+  }, []);
+
   const { priceMin, priceMax, lowPrice, highPrice, yScale, pathD, areaD } = useMemo(() => {
     if (data.length < 2) {
       return {
@@ -168,8 +178,12 @@ export function TradingChart({
         </div>
       </div>
 
-      <CardContent className="flex-1 p-0">
-        <div className="flex flex-col h-full">
+      <CardContent className="relative flex-1 overflow-hidden p-0">
+        <div
+          className={`flex h-full flex-col transition-[filter,opacity] duration-300 ${
+            isChartLoading ? "blur-sm opacity-80" : "blur-0 opacity-100"
+          }`}
+        >
           {/* Price info bar */}
           <div className="flex items-baseline gap-4 px-4 pt-2">
             <div className="flex items-baseline gap-2">
@@ -399,6 +413,20 @@ export function TradingChart({
             </svg>
           </div>
         </div>
+
+        {isChartLoading && (
+          <div
+            className="absolute inset-0 z-10 flex items-center justify-center bg-[color-mix(in_srgb,var(--surface-card)_42%,transparent)] backdrop-blur-sm"
+            role="status"
+            aria-live="polite"
+          >
+            <span className="sr-only">Loading chart</span>
+            <span
+              className="size-9 animate-spin rounded-full border-2 border-[var(--border-default)] border-t-[var(--action-primary)] motion-reduce:animate-none"
+              aria-hidden="true"
+            />
+          </div>
+        )}
       </CardContent>
     </Card>
   );
