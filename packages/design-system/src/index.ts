@@ -23,4 +23,10 @@ export type { AlertTone } from "./components/Alert/Alert";
 
 export { EmptyState, type EmptyStateProps } from "./components/EmptyState/EmptyState";
 
+export { SearchField } from "./components/SearchField/SearchField";
+export type { SearchFieldProps } from "./components/SearchField/SearchField.types";
+
+export { Tabs } from "./components/Tabs/Tabs";
+export type { TabsProps, TabItem } from "./components/Tabs/Tabs.types";
+
 export { cn } from "./utilities/cn";

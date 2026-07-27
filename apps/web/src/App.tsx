@@ -1,17 +1,31 @@
+import { useState } from "react";
 import {
   Button,
   Card,
   CardHeader,
   CardTitle,
   CardContent,
+  SearchField,
+  Tabs,
 } from "@assessment/design-system";
+import type { TabItem } from "@assessment/design-system";
 import { PairDetails } from "@/features/trading/components/PairDetails";
+import { WatchlistTable } from "@/features/trading/components/WatchlistTable";
+import { MOCK_WATCHLIST_ITEMS } from "@/features/trading/data/mock-data";
+
+const WATCHLIST_TABS: TabItem[] = [
+  { id: "watchlist", label: "Watchlist" },
+  { id: "holdings", label: "Holdings" },
+  { id: "market-movers", label: "Market Movers" },
+];
 
 function App() {
+  const [activeWatchlistTab, setActiveWatchlistTab] = useState("watchlist");
+
   return (
     <div className="flex min-h-screen flex-col bg-surface-page" data-theme="dark">
       {/* Navbar */}
-      <header className="sticky top-0 z-50 border-b border-border-default bg-[var(--deriv-primary-black)]/95 backdrop-blur-sm">
+      <header className="sticky top-0 z-50 bg-[var(--deriv-primary-black)]/95 backdrop-blur-sm">
         <nav className="flex h-18 items-center justify-between px-6">
           <div className="flex items-center gap-8">
             <img
@@ -42,7 +56,7 @@ function App() {
       </header>
 
       {/* Price Ticker Bar */}
-      <div className="border-b border-border-default bg-surface-page">
+      <div className="border-y border-[var(--deriv-primary-black)] bg-surface-page">
         <div className="flex min-h-12 items-center gap-10 px-6 py-2 text-sm">
           <div className="flex items-center gap-10">
             <PairDetails pair="BTC/USDT" assetName="Bitcoin" />
@@ -80,32 +94,27 @@ function App() {
         </div>
       </div>
 
-      {/* Main Content — 4-column grid: 2/8 | 4/8 | 1/8 | 1/8 */}
-      <main className="grid flex-1 grid-cols-8 gap-3 p-3">
-        {/* Left Panel — 2/8 (col-span-2) */}
-        <section className="col-span-2 flex flex-col gap-3">
-          <Card>
-            <CardHeader>
-              <CardTitle>Order Book</CardTitle>
-            </CardHeader>
+      {/* Main Content — 3-column grid: 2/8 | 4/8 | 2/8 */}
+      <main className="grid flex-1 grid-cols-8 gap-0 bg-[var(--deriv-primary-black)]">
+        {/* Left Panel — Watchlist */}
+        <section className="col-span-2">
+          <Card className="h-full">
             <CardContent>
-              <p className="body-sm text-content-secondary">Empty</p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle>Watchlist</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="body-sm text-content-secondary">Empty</p>
+              <SearchField />
+              <Tabs
+                tabs={WATCHLIST_TABS}
+                activeTab={activeWatchlistTab}
+                onChange={setActiveWatchlistTab}
+                className="mt-4"
+              />
+              <WatchlistTable items={MOCK_WATCHLIST_ITEMS} />
             </CardContent>
           </Card>
         </section>
 
-        {/* Center Panel — 4/8 (col-span-4) */}
-        <section className="col-span-4 flex flex-col gap-3">
-          <Card className="flex-1">
+        {/* Center Panel — Chart */}
+        <section className="col-span-4">
+          <Card className="h-full">
             <CardHeader>
               <CardTitle>Chart</CardTitle>
             </CardHeader>
@@ -115,8 +124,8 @@ function App() {
           </Card>
         </section>
 
-        {/* Right Panel — 1/8 (col-span-1) */}
-        <section className="col-span-1 flex flex-col gap-3">
+        {/* Right Panel — Order Form + Order Book stacked */}
+        <section className="col-span-2 flex flex-col gap-0">
           <Card className="flex-1">
             <CardHeader>
               <CardTitle>Order Form</CardTitle>
@@ -125,13 +134,10 @@ function App() {
               <p className="body-sm text-content-secondary">Empty</p>
             </CardContent>
           </Card>
-        </section>
 
-        {/* Far Right Panel — 1/8 (col-span-1) */}
-        <section className="col-span-1 flex flex-col gap-3">
           <Card className="flex-1">
             <CardHeader>
-              <CardTitle>Market Trades</CardTitle>
+              <CardTitle>Order Book</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="body-sm text-content-secondary">Empty</p>
